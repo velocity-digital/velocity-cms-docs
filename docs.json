@@ -1,9 +1,9 @@
 {
   "$schema": "https://mintlify.com/docs.json",
-  "theme": "mint",
-  "name": "Mint Starter Kit",
+  "theme": "willow",
+  "name": "Velocity CMS",
   "colors": {
-    "primary": "#16A34A",
+    "primary": "#B75EAC",
     "light": "#07C983",
     "dark": "#15803D"
   },
@@ -94,9 +94,9 @@
   },
   "footer": {
     "socials": {
-      "x": "https://x.com/mintlify",
-      "github": "https://github.com/mintlify",
-      "linkedin": "https://linkedin.com/company/mintlify"
+      "x": "https://x.com/velocitymedia",
+      "github": "https://github.com/velocity-digital",
+      "linkedin": "https://linkedin.com/company/velocitymedia"
     }
   }
 }
