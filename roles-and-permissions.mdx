@@ -1,0 +1,76 @@
+Roles and permissions are implemented using [django permission system](https://docs.djangoproject.com/en/5.2/topics/auth/default/#permissions-and-authorization). This is the
+permission system that is used in django admin site.
+## Groups
+For each role we create a group and add permissions. By default, the permissions are created by django for every
+object. So there is no need to add a new permission manually. We can only select permissions. After creating a group we can add a user to the group. The user will have permissions
+assigned to the group.
+
+Here are broad steps we are going to take in this guide
+
+1. Create roles
+2. We will add a fictional user "spacetom" and assign them  "Super Admin" role.
+3. We will add a fictional user "marstom" and assign them "Content Editor" role.
+
+### Create roles
+
+Run the command
+
+```bash
+poetry run python manage.py create_roles
+```
+The above command will create 4 roles which we will use later
+
+1. **Super Admin:** they have full access to everything
+2. **Content Editor:** they have full access to every content
+3. **Vendor:** they have access to create and edit listings. They have access to view
+    1. Business features
+    2. Listing categories
+    3. Google categories
+    4. Locations
+    5. Reviews
+    6. Tags
+4. **User:** they have access to view every content
+
+### Add **spacetom** user as Super Admin
+
+1. Login into django administration site and click on the "Users" menu in the left menu. You will find this under
+the heading **Authentication**.
+![Users list view](/images/users_list_view.png)
+2. Click on the "+" icon in the top right corner.
+3. For "Username" type "spacetom". Type the rest of the fields, email, password and password confirmation
+4. Click save
+3. Under "Groups" section in the form, select "Super Admin" Group. Click on the arrow that points to the right
+4. Click save
+
+After completing the above steps you will have a user named "spacetom" with the role of "Super Admin". Via the
+GraphQL API they have full access to everything.
+
+### Add **marstom** user as Content Editor
+
+1. In django administration site click on the "Users" menu in the left menu. You will find this under
+the heading **Authentication**.
+2. Click on the "+" icon in the top right corner.
+3. For "Username" type "marstom". Type the rest of the fields, email, password and password confirmation
+4. Click save
+5. Under "Groups" section in the form, select "Content Editor" Group. Click on the arrow that points to the right
+6. Click save
+
+After completing the above steps you will have a user named "marstom" with the role of "Content Editor". Via the
+GraphQL API they can add, change, delete and view all content.
+
+Repeat the same process for "spacetom" and "marstom" users to assign roles for any user.
+
+## Permissions
+
+Permissions can be directly attached to a user without adding a group. For example, we might only want to give a user the
+ability to edit articles without giving them full "Content Editor" permissions. The following
+are the steps taken to attach permissions directly to a user
+
+1. In django administration site click on the "Users" menu in the left menu. You will find this under the heading
+**Authentication**
+
+2. Click on the user you want to grant permissions.
+3. Under "Permissions" section in the form select the "Content | article | Can add article" permission and move it to the right side.
+4. Click save
+
+After completing the above steps the selected user will have the permission to add an article.
