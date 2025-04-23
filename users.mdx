@@ -1,0 +1,8 @@
+### Logging In
+
+To be able to log in a user must be [active](https://docs.djangoproject.com/en/5.2/ref/contrib/auth/#django.contrib.auth.models.User.is_active) and approved.
+On the user model there is a custom column called `is_approved`. It is a boolean field.
+
+If this property is set to True then the user can log in.
+It is set to false then the user won't be able to log in.
+
